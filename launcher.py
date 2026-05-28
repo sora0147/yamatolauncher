@@ -63,7 +63,9 @@ PLATFORM_KEY = {
 SETTINGS_PATH = ROOT / f"launcher_settings.{PLATFORM_KEY}.json"
 LEGACY_SETTINGS_PATH = ROOT / "launcher_settings.json"
 VENDOR_MODS_DIR = ROOT / "vendor" / "mods"
+VENDOR_CONFIG_DIR = ROOT / "vendor" / "config"
 MOD_FILE_EXTENSIONS = {".jar", ".zip", ".litemod"}
+CONFIG_DOC_FILENAMES = {"README.md", "README.txt", ".gitkeep"}
 
 
 class LauncherError(RuntimeError):
@@ -234,6 +236,10 @@ def sha1_file(path: Path) -> str:
 
 def mods_dir(instance_dir: Path) -> Path:
     return instance_dir / "mods"
+
+
+def config_dir(instance_dir: Path) -> Path:
+    return instance_dir / "config"
 
 
 def ensure_instance_dirs(instance_dir: Path) -> None:
@@ -692,6 +698,56 @@ def download_bundled_entry(entry: dict[str, Any], instance_dir: Path, log: Calla
     return [target]
 
 
+def bundled_config_sources() -> list[Path]:
+    if not VENDOR_CONFIG_DIR.exists():
+        return []
+    sources = [
+        path
+        for path in VENDOR_CONFIG_DIR.rglob("*")
+        if path.is_file() and not path.is_symlink() and path.name not in CONFIG_DOC_FILENAMES
+    ]
+    return sorted(sources, key=lambda path: path.relative_to(VENDOR_CONFIG_DIR).as_posix().lower())
+
+
+def copy_bundled_configs(
+    instance_dir: Path,
+    log: Callable[[str], None] = log_console,
+    *,
+    overwrite: bool = False,
+    log_empty: bool = False,
+) -> list[Path]:
+    ensure_instance_dirs(instance_dir)
+    sources = bundled_config_sources()
+    if not sources:
+        if log_empty:
+            log(f"配布configファイルはありません: {VENDOR_CONFIG_DIR}")
+        return []
+
+    copied: list[Path] = []
+    for source in sources:
+        relative = source.relative_to(VENDOR_CONFIG_DIR)
+        target = config_dir(instance_dir) / relative
+        label = relative.as_posix()
+        target.parent.mkdir(parents=True, exist_ok=True)
+
+        if target.exists() and target.is_dir():
+            raise LauncherError(f"configコピー先がフォルダです: {target}")
+        if target.exists() and not overwrite:
+            log(f"config導入済み: {label}")
+            continue
+        if target.exists() and target.is_file() and sha1_file(target) == sha1_file(source):
+            log(f"config導入済み: {label}")
+            continue
+
+        shutil.copy2(source, target)
+        copied.append(target)
+        log(f"configをコピー: {label}")
+
+    if copied:
+        log(f"配布configコピー完了: {len(copied)} ファイル")
+    return copied
+
+
 def download_manifest_mods(
     manifest: dict[str, Any],
     instance_dir: Path,
@@ -927,6 +983,7 @@ def export_server_folder(
 ) -> Path:
     ensure_instance_dirs(instance_dir)
     ensure_server_dirs(server_dir)
+    copy_bundled_configs(instance_dir, log)
 
     copied, missing = copy_server_mods(manifest, instance_dir, server_dir, log)
     if copied:
@@ -938,8 +995,8 @@ def export_server_folder(
             names = ", ".join(entry.get("name", "") for entry in manual)
             raise LauncherError(f"server用MODの取得に失敗しました: {names}")
 
-    if (instance_dir / "config").exists():
-        shutil.copytree(instance_dir / "config", server_dir / "config", dirs_exist_ok=True)
+    if config_dir(instance_dir).exists():
+        shutil.copytree(config_dir(instance_dir), config_dir(server_dir), dirs_exist_ok=True)
         log("configをserverフォルダへコピーしました。")
 
     forge_jar = install_forge_server(server_dir, java_cmd, log)
@@ -1101,6 +1158,8 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--check", action="store_true", help="環境チェックだけ実行")
     parser.add_argument("--install-forge", action="store_true", help="Forge 1.12.2を導入")
     parser.add_argument("--download-mods", action="store_true", help="自動取得できるMODを導入")
+    parser.add_argument("--install-configs", action="store_true", help="vendor/config のMOD設定をconfigへコピー")
+    parser.add_argument("--overwrite-configs", action="store_true", help="config適用時に既存ファイルも上書き")
     parser.add_argument("--export-server", action="store_true", help="サーバー用フォルダを出力")
     parser.add_argument("--create-profile", action="store_true", help="公式Minecraft Launcherのプロファイルを作成")
     parser.add_argument("--launch", action="store_true", help="公式Minecraft Launcherを起動")
@@ -1129,6 +1188,7 @@ def run_cli(args: argparse.Namespace) -> int:
     minecraft_dir, instance_dir = resolve_paths(args)
     server_dir = resolve_server_dir(args, instance_dir)
     ensure_instance_dirs(instance_dir)
+    configs_installed = False
 
     if args.check:
         check_environment(minecraft_dir, instance_dir, args.java)
@@ -1136,12 +1196,20 @@ def run_cli(args: argparse.Namespace) -> int:
         install_forge(minecraft_dir, instance_dir, args.java)
     if args.download_mods:
         downloaded, manual = download_manifest_mods(manifest, instance_dir)
+        copy_bundled_configs(instance_dir, overwrite=args.overwrite_configs)
+        configs_installed = True
         log_console(f"自動取得完了: {len(downloaded)} ファイル")
         if manual:
             log_console("手動導入が必要なMOD:")
             for entry in manual:
                 log_console(f" - {entry.get('name')}: {entry.get('page', 'URLなし')}")
+    if args.install_configs and not configs_installed:
+        copy_bundled_configs(instance_dir, overwrite=args.overwrite_configs, log_empty=True)
+        configs_installed = True
     if args.export_server:
+        if not configs_installed:
+            copy_bundled_configs(instance_dir, overwrite=args.overwrite_configs)
+            configs_installed = True
         export_server_folder(manifest, instance_dir, server_dir, args.java, args.ram)
     if args.create_profile:
         create_launcher_profile(minecraft_dir, instance_dir, args.ram)
@@ -1151,7 +1219,7 @@ def run_cli(args: argparse.Namespace) -> int:
     if args.launch:
         launch_official_launcher()
 
-    if not any((args.check, args.install_forge, args.download_mods, args.export_server, args.create_profile, args.launch, args.list)):
+    if not any((args.check, args.install_forge, args.download_mods, args.install_configs, args.export_server, args.create_profile, args.launch, args.list)):
         return run_gui()
     return 0
 
@@ -1221,21 +1289,22 @@ def run_gui() -> int:
 
             actions = ttk.Frame(root)
             actions.grid(row=1, column=0, sticky="ew", pady=(10, 8))
-            for index in range(8):
-                actions.columnconfigure(index, weight=1)
-
             buttons = [
                 ("環境チェック", self.action_check),
                 ("Forge導入", self.action_install_forge),
                 ("MOD自動DL", self.action_download_mods),
+                ("config適用", self.action_install_configs),
                 ("手動MOD追加", self.action_import_mods),
                 ("server出力", self.action_export_server),
                 ("プロファイル作成", self.action_create_profile),
                 ("公式ランチャー起動", self.action_launch),
                 ("modsフォルダ", self.action_open_mods),
             ]
+            action_columns = 5
+            for index in range(action_columns):
+                actions.columnconfigure(index, weight=1)
             for index, (text, command) in enumerate(buttons):
-                ttk.Button(actions, text=text, command=command).grid(row=0, column=index, sticky="ew", padx=3)
+                ttk.Button(actions, text=text, command=command).grid(row=index // action_columns, column=index % action_columns, sticky="ew", padx=3, pady=2)
 
             content = ttk.Panedwindow(root, orient="vertical")
             content.grid(row=2, column=0, sticky="nsew")
@@ -1359,6 +1428,7 @@ def run_gui() -> int:
         def action_download_mods(self) -> None:
             def task() -> None:
                 downloaded, manual = download_manifest_mods(manifest, self.instance_dir(), self.log)
+                copy_bundled_configs(self.instance_dir(), self.log)
                 self.log(f"自動取得: {len(downloaded)} ファイル")
                 if manual:
                     self.log("手動導入が必要なMOD:")
@@ -1366,6 +1436,16 @@ def run_gui() -> int:
                         self.log(f" - {entry.get('name')}: {entry.get('page', 'URLなし')}")
 
             self.run_task("MOD自動ダウンロード", task)
+
+        def action_install_configs(self) -> None:
+            overwrite = messagebox.askyesno(
+                APP_TITLE,
+                "既存のconfigも上書きしますか？\n「いいえ」は未導入ファイルだけコピーします。",
+            )
+            self.run_task(
+                "config適用",
+                lambda: copy_bundled_configs(self.instance_dir(), self.log, overwrite=overwrite, log_empty=True),
+            )
 
         def action_export_server(self) -> None:
             self.run_task(
