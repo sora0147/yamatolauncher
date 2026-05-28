@@ -402,6 +402,30 @@
       "detect": ["gvcreversion2", "gvcr2"],
       "file_patterns": ["gvcreversion2"],
       "notes": "CurseForge上のGVC_REVERSION2を取得します。古いOpenEye版が必要なら手動で差し替えてください。"
+    },
+    {
+      "name": "McHeli: Community Edition",
+      "source": "curseforge",
+      "curseforge_project_id": 1383222,
+      "curseforge_file_id": 7628896,
+      "filename": "mcheli-ce-1.4.2.jar",
+      "curseforge_search": "McHeli Community Edition",
+      "page": "https://www.curseforge.com/minecraft/mc-mods/mchce",
+      "detect": ["mcheli", "mcheli-ce", "mchce"],
+      "file_patterns": ["mcheli"],
+      "notes": "1.12.2 Forge対応のMcHeli継続版です。追加コンテンツパックはゲームフォルダのmcheli_addonsに入れてください。"
+    },
+    {
+      "name": "Funky Locomotion",
+      "source": "curseforge",
+      "curseforge_project_id": 224190,
+      "curseforge_file_id": 2599318,
+      "filename": "funky-locomotion-1.12.2-1.1.2.jar",
+      "curseforge_search": "Funky Locomotion",
+      "page": "https://www.curseforge.com/minecraft/mc-mods/funky-locomotion",
+      "detect": ["funky-locomotion", "funkylocomotion"],
+      "file_patterns": ["funky-locomotion"],
+      "notes": "フレームと高度なピストンでブロック移動を追加するMODです。"
     }
   ]
 }

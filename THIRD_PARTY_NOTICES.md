@@ -24,6 +24,21 @@
 - CurseForge project ID: `226321`
 - Minecraft 1.12.2 release file: `Bloodmoon-MC1.12.2-1.5.3.jar`
 
+## McHeli: Community Edition
+
+- Project page: https://www.curseforge.com/minecraft/mc-mods/mchce
+- CurseForge project ID: `1383222`
+- Minecraft 1.12.2 release file: `mcheli-ce-1.4.2.jar`
+- License: GPL-3.0
+
+## Funky Locomotion
+
+- Project page: https://www.curseforge.com/minecraft/mc-mods/funky-locomotion
+- CurseForge project ID: `224190`
+- Minecraft 1.12.2 release file: `funky-locomotion-1.12.2-1.1.2.jar`
+- License: All Rights Reserved
+- Notes: The project page allows use in public or private modpacks with proper credit, no charge, and unmodified source files.
+
 ## Dependency Libraries
 
 - Forgelin: https://www.curseforge.com/minecraft/mc-mods/shadowfacts-forgelin
