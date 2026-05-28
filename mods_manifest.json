@@ -67,6 +67,14 @@
       "detect": ["mekanism-"]
     },
     {
+      "name": "Mekanism Generators",
+      "source": "modrinth",
+      "modrinth_slug": "mekanism-generators",
+      "page": "https://modrinth.com/mod/mekanism-generators",
+      "detect": ["mekanismgenerators"],
+      "notes": "Mekanism 1.12.2-9.8.3.390 が必要です。"
+    },
+    {
       "name": "Thermal Expansion",
       "source": "curseforge",
       "curseforge_project_id": 69163,
@@ -288,8 +296,7 @@
       "source": "modrinth",
       "modrinth_slug": "jei",
       "page": "https://modrinth.com/mod/jei",
-      "detect": ["jei_1.12", "jei-1.12", "jei"],
-      "side": "client"
+      "detect": ["jei_1.12", "jei-1.12", "jei"]
     },
     {
       "name": "ToroHealth Damage Indicators",
