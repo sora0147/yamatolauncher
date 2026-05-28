@@ -114,9 +114,9 @@
 
 - Project page: https://www.curseforge.com/minecraft/mc-mods/modularui
 - CurseForge project ID: `624243`
-- Minecraft 1.12.2 release file: `modularui-2.5.1.jar`
+- Minecraft 1.12.2 release file: `modularui-3.1.6.jar`
 - License: LGPL-3.0
-- Notes: Required dependency for McHeli: Community Edition.
+- Notes: Required dependency for McHeli: Community Edition. McHeli CE 1.4.2 requires the newer 3.x API.
 
 ## Funky Locomotion
 

@@ -525,13 +525,15 @@
       "name": "ModularUI",
       "source": "curseforge",
       "curseforge_project_id": 624243,
-      "curseforge_file_id": 7065084,
-      "filename": "modularui-2.5.1.jar",
+      "curseforge_file_id": 7929464,
+      "filename": "modularui-3.1.6.jar",
       "dependency": true,
-      "page": "https://www.curseforge.com/minecraft/mc-mods/modularui/files/7065084",
+      "page": "https://www.curseforge.com/minecraft/mc-mods/modularui/files/7929464",
       "detect": ["modularui"],
       "file_patterns": ["modularui"],
-      "notes": "McHeli: Community Editionの必須依存です。MixinBooterが必要です。"
+      "replace_existing": true,
+      "replace_patterns": ["modularui"],
+      "notes": "McHeli: Community Editionの必須依存です。1.4.2が参照するAPIを含む3.1.6を取得します。MixinBooterが必要です。"
     },
     {
       "name": "McHeli: Community Edition",
