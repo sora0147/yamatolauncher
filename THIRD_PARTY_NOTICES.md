@@ -100,6 +100,23 @@
 - CurseForge project ID: `1383222`
 - Minecraft 1.12.2 release file: `mcheli-ce-1.4.2.jar`
 - License: GPL-3.0
+- Notes: Requires ElegantNetworking and ModularUI.
+
+## ElegantNetworking
+
+- Project page: https://www.curseforge.com/minecraft/mc-mods/elegant-networking
+- CurseForge project ID: `433025`
+- Minecraft 1.12.2 release file: `elegant-networking-1.12-3.14.jar`
+- License: LGPL-3.0
+- Notes: Required dependency for McHeli: Community Edition.
+
+## ModularUI
+
+- Project page: https://www.curseforge.com/minecraft/mc-mods/modularui
+- CurseForge project ID: `624243`
+- Minecraft 1.12.2 release file: `modularui-2.5.1.jar`
+- License: LGPL-3.0
+- Notes: Required dependency for McHeli: Community Edition.
 
 ## Funky Locomotion
 
