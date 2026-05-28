@@ -24,6 +24,76 @@
 - CurseForge project ID: `226321`
 - Minecraft 1.12.2 release file: `Bloodmoon-MC1.12.2-1.5.3.jar`
 
+## Inventory Tweaks
+
+- Project page: https://www.curseforge.com/minecraft/mc-mods/inventory-tweaks
+- CurseForge project ID: `223094`
+- Minecraft 1.12.2 release file: `InventoryTweaks-1.63.jar`
+- License: MIT License
+- Notes: Client-side inventory and chest sorting mod.
+
+## Mouse Tweaks
+
+- Project page: https://www.curseforge.com/minecraft/mc-mods/mouse-tweaks
+- CurseForge project ID: `60089`
+- Minecraft 1.12.2 release file: `MouseTweaks-2.10-mc1.12.2.jar`
+- License: BSD License
+- Notes: Client-side inventory mouse interaction improvements.
+
+## Controlling
+
+- Project page: https://www.curseforge.com/minecraft/mc-mods/controlling
+- CurseForge project ID: `250398`
+- Minecraft 1.12.2 release file: `Controlling-3.0.12.2.jar`
+- License: MIT License
+- Notes: Client-side key binding search. Pinned to 3.0.12.2 to avoid the later 1.12.2 dependency declaration.
+
+## The One Probe
+
+- Project page: https://www.curseforge.com/minecraft/mc-mods/the-one-probe
+- CurseForge project ID: `245211`
+- Minecraft 1.12.2 release file: `theoneprobe-1.12-1.4.24.jar`
+- License: MIT License
+
+## LemonSkin
+
+- Project page: https://modrinth.com/mod/lemonskin
+- CurseForge project ID: `1337144`
+- Modrinth version: `3.1.0`
+- Minecraft 1.12.2 release file: `lemonskin-3.1.0.jar`
+- License: MIT License
+- Notes: AppleSkin fork for Minecraft 1.12.2. Requires MixinBooter.
+
+## Thermal Dynamics
+
+- Project page: https://www.curseforge.com/minecraft/mc-mods/thermal-dynamics
+- CurseForge project ID: `227443`
+- Minecraft 1.12.2 release file: `ThermalDynamics-1.12.2-2.5.6.1-universal.jar`
+- License: All Rights Reserved
+- Notes: Requires Thermal Foundation and CodeChickenLib for the pinned 1.12.2 release.
+
+## Better Builder's Wands
+
+- Project page: https://www.curseforge.com/minecraft/mc-mods/better-builders-wands
+- CurseForge project ID: `238403`
+- Minecraft 1.12.2 release file: `BetterBuildersWands-1.12.2-0.13.2.271+5997513.jar`
+- License: All Rights Reserved
+
+## Chisel
+
+- Project page: https://www.curseforge.com/minecraft/mc-mods/chisel
+- CurseForge project ID: `235279`
+- Minecraft 1.12.2 release file: `Chisel-MC1.12.2-1.0.2.45.jar`
+- License: GPL-2.0
+
+## ConnectedTexturesMod
+
+- Project page: https://www.curseforge.com/minecraft/mc-mods/ctm
+- CurseForge project ID: `267602`
+- Minecraft 1.12.2 release file: `CTM-MC1.12.2-1.0.2.31.jar`
+- License: GPL-3.0
+- Notes: Required dependency for Chisel.
+
 ## McHeli: Community Edition
 
 - Project page: https://www.curseforge.com/minecraft/mc-mods/mchce

@@ -131,6 +131,17 @@
       "file_patterns": ["thermalfoundation"]
     },
     {
+      "name": "Thermal Dynamics",
+      "source": "curseforge",
+      "curseforge_project_id": 227443,
+      "curseforge_file_id": 2920505,
+      "filename": "ThermalDynamics-1.12.2-2.5.6.1-universal.jar",
+      "page": "https://www.curseforge.com/minecraft/mc-mods/thermal-dynamics/files/2920505",
+      "detect": ["thermaldynamics", "thermal-dynamics"],
+      "file_patterns": ["thermaldynamics"],
+      "notes": "Thermal Expansion系列のアイテム・液体・RF輸送用ダクトを追加します。Thermal FoundationとCodeChickenLibが必要です。"
+    },
+    {
       "name": "Industrial Foregoing",
       "source": "modrinth",
       "modrinth_slug": "industrial-foregoing",
@@ -292,6 +303,67 @@
       "file_patterns": ["ironchest"]
     },
     {
+      "name": "Inventory Tweaks",
+      "source": "curseforge",
+      "curseforge_project_id": 223094,
+      "curseforge_file_id": 2482481,
+      "filename": "InventoryTweaks-1.63.jar",
+      "curseforge_search": "Inventory Tweaks",
+      "page": "https://www.curseforge.com/minecraft/mc-mods/inventory-tweaks/files/2482481",
+      "detect": ["inventorytweaks", "inventory-tweaks"],
+      "file_patterns": ["inventorytweaks", "inventory-tweaks"],
+      "side": "client",
+      "notes": "インベントリやチェストの整理機能を追加します。1.12.2対応のInventory Tweaks 1.63を取得します。"
+    },
+    {
+      "name": "Mouse Tweaks",
+      "source": "curseforge",
+      "curseforge_project_id": 60089,
+      "curseforge_file_id": 2671937,
+      "filename": "MouseTweaks-2.10-mc1.12.2.jar",
+      "page": "https://www.curseforge.com/minecraft/mc-mods/mouse-tweaks/files/2671937",
+      "detect": ["mousetweaks", "mouse-tweaks"],
+      "file_patterns": ["mousetweaks"],
+      "side": "client",
+      "notes": "インベントリ内のドラッグ移動やスクロール移動を改善するクライアント専用MODです。"
+    },
+    {
+      "name": "Controlling",
+      "source": "curseforge",
+      "curseforge_project_id": 250398,
+      "curseforge_file_id": 4428378,
+      "filename": "Controlling-3.0.12.2.jar",
+      "page": "https://www.curseforge.com/minecraft/mc-mods/controlling/files/4428378",
+      "detect": ["controlling"],
+      "file_patterns": ["controlling"],
+      "side": "client",
+      "notes": "キー設定画面に検索機能を追加します。1.12.2で追加依存がない3.0.12.2に固定しています。"
+    },
+    {
+      "name": "The One Probe",
+      "source": "curseforge",
+      "curseforge_project_id": 245211,
+      "curseforge_file_id": 2616399,
+      "filename": "theoneprobe-1.12-1.4.24.jar",
+      "page": "https://www.curseforge.com/minecraft/mc-mods/the-one-probe/files/2616399",
+      "detect": ["theoneprobe", "the-one-probe"],
+      "file_patterns": ["theoneprobe"],
+      "notes": "見ているブロックや機械の情報を表示します。サーバーにも導入します。"
+    },
+    {
+      "name": "LemonSkin",
+      "source": "direct",
+      "direct_url": "https://cdn.modrinth.com/data/NsYiWbof/versions/xVhMyMma/lemonskin-3.1.0.jar",
+      "filename": "lemonskin-3.1.0.jar",
+      "sha1": "c5b285c7e45077c8f002ae5c04520c8ae26ce263",
+      "page": "https://modrinth.com/mod/lemonskin/version/3.1.0",
+      "detect": ["lemonskin"],
+      "file_patterns": ["lemonskin"],
+      "replace_existing": true,
+      "replace_patterns": ["lemonskin", "appleskin"],
+      "notes": "AppleSkinの1.12.2向けフォークです。満腹度・隠し満腹度表示を追加します。MixinBooterが必要です。"
+    },
+    {
       "name": "Just Enough Items (JEI)",
       "source": "modrinth",
       "modrinth_slug": "jei",
@@ -342,6 +414,40 @@
       "detect": ["openmodslib"],
       "file_patterns": ["openmodslib"],
       "notes": "OpenBlocksの必須依存です。"
+    },
+    {
+      "name": "Better Builder's Wands",
+      "source": "curseforge",
+      "curseforge_project_id": 238403,
+      "curseforge_file_id": 2691084,
+      "filename": "BetterBuildersWands-1.12.2-0.13.2.271+5997513.jar",
+      "page": "https://www.curseforge.com/minecraft/mc-mods/better-builders-wands/files/2691084",
+      "detect": ["betterbuilderswands", "better-builders-wands"],
+      "file_patterns": ["betterbuilderswands"],
+      "notes": "複数ブロックをまとめて設置できる建築補助ワンドを追加します。"
+    },
+    {
+      "name": "ConnectedTexturesMod (CTM)",
+      "source": "curseforge",
+      "curseforge_project_id": 267602,
+      "curseforge_file_id": 2915363,
+      "filename": "CTM-MC1.12.2-1.0.2.31.jar",
+      "dependency": true,
+      "page": "https://www.curseforge.com/minecraft/mc-mods/ctm/files/2915363",
+      "detect": ["ctm", "connectedtexturesmod"],
+      "file_patterns": ["ctm"],
+      "notes": "Chiselの必須依存ライブラリです。"
+    },
+    {
+      "name": "Chisel",
+      "source": "curseforge",
+      "curseforge_project_id": 235279,
+      "curseforge_file_id": 2915375,
+      "filename": "Chisel-MC1.12.2-1.0.2.45.jar",
+      "page": "https://www.curseforge.com/minecraft/mc-mods/chisel/files/2915375",
+      "detect": ["chisel"],
+      "file_patterns": ["chisel"],
+      "notes": "建築用の装飾ブロックバリエーションを大量に追加します。CTMが必要です。"
     },
     {
       "name": "Storage Drawers",
