@@ -13,7 +13,8 @@
 
 現在含めているconfig:
 
-- `net.minecraft.scalar.mineall.mod_mineallsmp.cfg`: 安山岩/花崗岩/閃緑岩をMineAll対象から外し、自動回収を有効にし、導入MODの鉱石を追加します。
+- `net.minecraft.scalar.cutall.mod_cutallsmp.cfg`: 導入MODの斧/チェーンソー系ツールをCutAll対象ツールに追加します。
+- `net.minecraft.scalar.mineall.mod_mineallsmp.cfg`: 安山岩/花崗岩/閃緑岩をMineAll対象から外し、自動回収を有効にし、導入MODの鉱石とツルハシ/ドリル/ハンマー系ツールを追加します。
 - `cofh/world/01_thermalfoundation_ores.json`: Thermal Foundationのアルミニウム鉱石生成を有効にします。
 
 この `README.md` はコピー対象外です。
