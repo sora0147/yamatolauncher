@@ -510,44 +510,6 @@
       "notes": "CurseForge上のGVC_REVERSION2を取得します。古いOpenEye版が必要なら手動で差し替えてください。"
     },
     {
-      "name": "ElegantNetworking",
-      "source": "curseforge",
-      "curseforge_project_id": 433025,
-      "curseforge_file_id": 3506598,
-      "filename": "elegant-networking-1.12-3.14.jar",
-      "dependency": true,
-      "page": "https://www.curseforge.com/minecraft/mc-mods/elegant-networking/files/3506598",
-      "detect": ["elegant_networking", "elegant-networking"],
-      "file_patterns": ["elegant-networking", "elegant_networking"],
-      "notes": "McHeli: Community Editionの必須依存です。1.12.2向けRelease版の3.14を取得します。"
-    },
-    {
-      "name": "ModularUI",
-      "source": "curseforge",
-      "curseforge_project_id": 624243,
-      "curseforge_file_id": 7929464,
-      "filename": "modularui-3.1.6.jar",
-      "dependency": true,
-      "page": "https://www.curseforge.com/minecraft/mc-mods/modularui/files/7929464",
-      "detect": ["modularui"],
-      "file_patterns": ["modularui"],
-      "replace_existing": true,
-      "replace_patterns": ["modularui"],
-      "notes": "McHeli: Community Editionの必須依存です。1.4.2が参照するAPIを含む3.1.6を取得します。MixinBooterが必要です。"
-    },
-    {
-      "name": "McHeli: Community Edition",
-      "source": "curseforge",
-      "curseforge_project_id": 1383222,
-      "curseforge_file_id": 7628896,
-      "filename": "mcheli-ce-1.4.2.jar",
-      "curseforge_search": "McHeli Community Edition",
-      "page": "https://www.curseforge.com/minecraft/mc-mods/mchce",
-      "detect": ["mcheli", "mcheli-ce", "mchce"],
-      "file_patterns": ["mcheli"],
-      "notes": "1.12.2 Forge対応のMcHeli継続版です。ElegantNetworkingとModularUIが必要です。追加コンテンツパックはゲームフォルダのmcheli_addonsに入れてください。"
-    },
-    {
       "name": "Funky Locomotion",
       "source": "curseforge",
       "curseforge_project_id": 224190,
